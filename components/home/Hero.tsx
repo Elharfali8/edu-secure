@@ -4,8 +4,8 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="min-h-[calc(100vh-80px)] bg-white">
-      <div className="mx-auto grid h-[calc(100vh-80px)] max-w-7xl items-center gap-8 px-4 py-6 sm:px-6 lg:grid-cols-2 lg:px-8">
+    <section className="bg-white lg:min-h-[calc(100vh-80px)]">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-10 sm:px-6 lg:h-[calc(100vh-80px)] lg:grid-cols-2 lg:px-8 lg:py-6">
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
             <ShieldCheck className="size-3.5" />
@@ -57,15 +57,30 @@ const Hero = () => {
         </div>
 
         <div className="flex items-center justify-center lg:justify-end">
-          <div className="flex aspect-square w-full max-w-sm items-center justify-center rounded-2xl border border-[#E5E7EB] bg-[#F8FAFC] p-10 shadow-sm xl:max-w-md">
-            <Image
-              src="/images/logo.png"
-              alt="EduSecure logo"
-              width={360}
-              height={360}
-              className="h-auto w-full object-contain"
-              priority
-            />
+          <div className="relative w-full max-w-[320px] sm:max-w-sm xl:max-w-md">
+            <div className="absolute -left-5 top-10 h-28 w-28 rounded-[2rem] bg-blue-100" />
+            <div className="absolute -right-4 -top-5 h-24 w-24 rounded-full bg-[#2563EB]/12" />
+            <div className="absolute -bottom-6 right-8 h-16 w-40 rounded-full bg-[#2563EB]/10" />
+
+            <div className="relative overflow-hidden rounded-[2rem] border border-blue-100 bg-white p-5 shadow-xl shadow-blue-950/10">
+              <div className="absolute inset-x-0 top-0 h-28 bg-blue-50" />
+              <div className="relative flex aspect-square items-center justify-center rounded-[1.5rem] bg-[#F8FAFC] p-8 ring-1 ring-[#E5E7EB] sm:p-10">
+                <Image
+                  src="/images/logo.png"
+                  alt="EduSecure logo"
+                  width={360}
+                  height={360}
+                  className="h-auto w-full object-contain"
+                  priority
+                />
+              </div>
+
+              <div className="relative mt-4 grid grid-cols-3 gap-2">
+                <div className="h-2 rounded-full bg-[#2563EB]" />
+                <div className="h-2 rounded-full bg-blue-200" />
+                <div className="h-2 rounded-full bg-blue-100" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
