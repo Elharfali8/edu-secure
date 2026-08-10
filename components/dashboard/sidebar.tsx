@@ -81,7 +81,7 @@ export function DashboardSidebar({ username, className }: DashboardSidebarProps)
         </div>
       </div>
 
-      <nav className="mt-8 flex-1 space-y-7 overflow-y-auto pr-1">
+      <nav className="mt-8 flex-1 space-y-7 overflow-y-auto pr-1 custom-scrollbar">
         {sections.map((section) => (
           <div key={section.label}>
             <p className="px-3 text-[11px] font-semibold tracking-[0.14em] text-blue-100/50">
