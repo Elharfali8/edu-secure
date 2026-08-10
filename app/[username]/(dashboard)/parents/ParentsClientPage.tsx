@@ -9,6 +9,12 @@ import {
   Users,
 } from "lucide-react";
 
+import {
+  Baby,
+  Phone,
+  UsersRound,
+} from "lucide-react";
+
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -198,7 +204,8 @@ const ParentsClientPage = () => {
               </div>
               {/* PARENTS TABLE */}
 <div className="mt-3 overflow-hidden rounded-xl border border-[#E5E7EB] bg-white shadow-sm">
-  {/* TABLE HEADER */}
+
+  {/* DESKTOP HEADER */}
   <div className="hidden grid-cols-[2fr_1.5fr_1fr] border-b border-[#E5E7EB] bg-[#F8FAFC] px-6 py-4 md:grid">
     <div className="text-xs font-semibold uppercase tracking-wide text-[#334155]">
       Parent
@@ -213,7 +220,7 @@ const ParentsClientPage = () => {
     </div>
   </div>
 
-  {/* TABLE ROWS */}
+  {/* ROWS */}
   <div>
     {parents.map((p) => {
       const initials = `${p.first_name?.[0] ?? ""}${
@@ -224,19 +231,16 @@ const ParentsClientPage = () => {
         <div
           key={p.id}
           className="
-            grid
-            grid-cols-1
-            gap-4
             border-b border-[#E5E7EB]
-            px-5 py-4
             last:border-b-0
-            md:grid-cols-[2fr_1.5fr_1fr]
+            px-4 py-4
+            md:grid md:grid-cols-[2fr_1.5fr_1fr]
             md:items-center
-            md:px-6
-            md:py-4
+            md:px-6 md:py-4
           "
         >
-          {/* PARENT */}
+
+          {/* DESKTOP / PARENT */}
           <div className="flex items-center gap-3">
             <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[#EEF2FF] text-sm font-semibold text-[#6366F1]">
               {initials}
@@ -247,25 +251,70 @@ const ParentsClientPage = () => {
                 {p.first_name} {p.last_name}
               </h3>
 
-              <p className="text-xs text-[#64748B]">
-                {p.children} {p.children === 1 ? "child" : "children"}
+              <p className="mt-0.5 text-xs text-[#64748B]">
+                {p.children}{" "}
+                {p.children === 1 ? "child" : "children"}
               </p>
             </div>
           </div>
 
-          {/* PHONE */}
-          <div>
+          {/* MOBILE INFORMATION */}
+          <div className="mt-4 grid grid-cols-2 gap-3 md:hidden">
+
+            {/* PHONE */}
+            <div className="flex items-center gap-2 rounded-lg bg-[#F8FAFC] px-3 py-2.5">
+              <div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-blue-50">
+                <Phone className="size-4 text-blue-600" />
+              </div>
+
+              <div className="min-w-0">
+                <p className="text-[10px] font-medium uppercase tracking-wide text-[#94A3B8]">
+                  Phone
+                </p>
+
+                <p className="truncate text-xs font-semibold text-[#334155]">
+                  {p.phone}
+                </p>
+              </div>
+            </div>
+
+            {/* CHILDREN */}
+            <div className="flex items-center gap-2 rounded-lg bg-[#F8FAFC] px-3 py-2.5">
+              <div className="flex size-8 shrink-0 items-center justify-center rounded-md bg-green-50">
+                <Baby className="size-4 text-green-600" />
+              </div>
+
+              <div>
+                <p className="text-[10px] font-medium uppercase tracking-wide text-[#94A3B8]">
+                  Children
+                </p>
+
+                <p className="text-xs font-semibold text-[#334155]">
+                  {p.children}{" "}
+                  {p.children === 1 ? "child" : "children"}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* DESKTOP PHONE */}
+          <div className="hidden md:block">
             <p className="text-sm font-medium text-[#334155]">
               {p.phone}
             </p>
           </div>
 
-          {/* CHILDREN */}
-          <div>
-            <span className="text-sm font-medium text-[#334155]">
-              {p.children}
-            </span>
+          {/* DESKTOP CHILDREN */}
+          <div className="hidden md:block">
+            <div className="flex items-center gap-2">
+              <UsersRound className="size-4 text-[#64748B]" />
+
+              <span className="text-sm font-medium text-[#334155]">
+                {p.children}
+              </span>
+            </div>
           </div>
+
         </div>
       );
     })}
